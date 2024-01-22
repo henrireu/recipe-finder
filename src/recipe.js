@@ -35,12 +35,14 @@ export default function Resepti() {
                 listaAineksista.push(ainesosa);
             }
         }
-        console.log(listaAineksista); // toimii
+
+        const kuvaurl = reseptiData?.meals[0].strMealThumb; 
         tulevanaytto(
             <div>
                 <h2>{nimi}</h2>
+                <img class="kuva" src={kuvaurl}></img>
                 <h4>Ainekset:</h4>
-                <ul>
+                <ul class="ainekset">
                     {listaAineksista.map((aines) => (
                         <li>{aines}</li>
                     ))}

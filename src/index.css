@@ -1,6 +1,16 @@
 h1{
   text-align: center;
 }
+
 .valmistusohje {
   margin-right: 600px;
+}
+
+.ainekset {
+  list-style: none;
+}
+
+.kuva {
+  width: 100px;
+  height: 100px;
 }
