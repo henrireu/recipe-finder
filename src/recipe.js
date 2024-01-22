@@ -10,7 +10,8 @@ function palautaRuoka(ruoka) {
 
 export default function Resepti() {
     const [reseptiData, setReseptiData] = useState(null);
-    const [nappiaPainettu, setNappiaPainettu] = useState(false);
+    //const [nappiaPainettu, setNappiaPainettu] = useState(false);
+    const [naytto, tulevanaytto] = useState(<p>testi</p>);
 
 
     useEffect(() => {
@@ -21,15 +22,44 @@ export default function Resepti() {
         
     },[]);
     
-    function datanhaku() {
-        setNappiaPainettu(true);
+    function datanhaku(event) {
+        event.preventDefault();
+        console.log(reseptiData);
+
+        const nimi = reseptiData?.meals[0]?.strMeal;
+        const listaAineksista = [];
+        // algoritmi ainestenhakuun
+        for (let x = 1; x < 21; x++) {
+            let ainesosa = reseptiData?.meals[0][`strIngredient${x}`];
+            if (ainesosa != null && ainesosa !== undefined && ainesosa !== "") {
+                listaAineksista.push(ainesosa);
+            }
+        }
+        console.log(listaAineksista); // toimii
+        tulevanaytto(
+            <div>
+                <h2>{nimi}</h2>
+                <h4>Ainekset:</h4>
+                <ul>
+                    {listaAineksista.map((aines) => (
+                        <li>{aines}</li>
+                    ))}
+                </ul>
+                <h4>Valmistusohje:</h4>
+                <p className="valmistusohje">{reseptiData?.meals[0].strInstructions}</p>
+            </div>
+        );
     }
     //
     return(
         <div>
-            <button onClick={() => datanhaku()}>moroo</button>
-            {nappiaPainettu && palautaRuoka(reseptiData?.meals[0]?.strMeal)}
-            <p>testi</p>
+            <h1>Recipe finder</h1>
+            <form>
+                <label for="searchInput">Haku:</label>
+                <input type="text" id="searchInput" name="searchInput"></input>
+                <button onClick={(event) => datanhaku(event)}>Search</button>
+            </form>
+            {naytto}
         </div>      
     )
 }
