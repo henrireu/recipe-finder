@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
-// datanhaku onnistuu nyt mutta sivun toiminnoissa ei ole mitään järkeä :D
-
-function palautaRuoka(ruoka) {
-    return (
-        <p>{ruoka}</p>
-    )
-}
+// edistyy mutta ongelmia vielä
 
 export default function Resepti() {
     const [reseptiData, setReseptiData] = useState(null);
     //const [nappiaPainettu, setNappiaPainettu] = useState(false);
     const [naytto, tulevanaytto] = useState(<p>testi</p>);
+    const [kategoriat, setKategoriat] = useState("");
+    const [kategoria, kategoriax] = useState("");
 
+
+    useEffect(() => {
+        fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+          .then(response => response.json())
+          .then(result => setKategoriat(result))
+    },[]);
+
+    useEffect(() => {
+        fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
+          .then(response => response.json())
+          .then(result => kategoriax(result))
+    }, []);
 
     useEffect(() => {
         
@@ -53,9 +61,17 @@ export default function Resepti() {
         );
     }
     //
+    function kategoriahaku() {
+        console.log(kategoriat);
+        console.log(kategoria);
+    }
     return(
         <div>
             <h1>Recipe finder</h1>
+            <div className="kategoriat">
+                
+            </div>
+            <button onClick={() => kategoriahaku()}>etsi kategoria</button>
             <form>
                 <label for="searchInput">Haku:</label>
                 <input type="text" id="searchInput" name="searchInput"></input>
