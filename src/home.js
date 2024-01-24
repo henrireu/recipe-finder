@@ -4,6 +4,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     const [resepti, setResepti] = useState();
     const [url, setUrl] = useState('');
+    const [hakusana, setHakusana] = useState('');
 
     useEffect(() => {
         async function fetchData() {
@@ -23,8 +24,9 @@ export default function Home() {
 
     function hae(event) {
         event.preventDefault();
-        setUrl('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata');
-        console.log(resepti);
+        let urlRunko = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+        let urlKoko = urlRunko + hakusana;
+        setUrl(urlKoko);
     }
 
     if(loading === true) {
@@ -40,10 +42,26 @@ export default function Home() {
             <h1 className="homeotsikko">Reseptihaku</h1>
             <form>
                 <div className="inputcontainer">
-                    <input className="haku" type="text"></input>
+                    <input 
+                        className="haku" 
+                        type="text"
+                        value={hakusana}
+                        onChange={(e) => setHakusana(e.target.value)}
+                    />
                     <button className="haeButton" onClick={(event) => hae(event)}>Hae</button>
                 </div>        
             </form>
+            <div className="ruokaresepti">
+                {resepti && resepti.meals && resepti.meals.length === 1 ? (
+                    <div>
+                        <p className="testi">{resepti.meals[0].strArea}</p>
+                    </div>
+                ) : (
+                    <div>
+                        <p className="testi">Ei löytynyt reseptiä</p>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
