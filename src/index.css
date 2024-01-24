@@ -1,3 +1,7 @@
+.kategoriat {
+  display: flex;
+}
+
 h1{
   text-align: center;
 }
@@ -14,3 +18,77 @@ h1{
   width: 100px;
   height: 100px;
 }
+
+.kategoriakuvat {
+  height: 50px;
+  width: 50px;
+}
+
+.linkit {
+  list-style: none;
+  display:flex;
+  padding: 10px;
+}
+
+.linkki {
+  margin-left: 15px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+nav {
+  background: lightgrey;
+  border-radius: 8px;
+  height: 80px;
+}
+
+.linkkii {
+  text-decoration: none;
+  color: black;
+}
+
+.linkkii:hover {
+  font-size: 25px;
+}
+
+.home {
+  height: 100vh;
+  border-radius: 8px;
+  background-image: url('kuvat/bolognese.jpg');
+  background-size: cover;
+}
+
+.homeotsikko {
+  font-size: 80px;
+  color: black;
+}
+
+.haku {
+  border-radius: 8px;
+  height: 20px;
+  width: 500px;
+}
+
+.haeButton {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.haeButton:hover {
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.inputcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // edistyy mutta ongelmia vielä
 
-export default function Resepti() {
+function Resepti() {
     const [reseptiData, setReseptiData] = useState(null);
     //const [nappiaPainettu, setNappiaPainettu] = useState(false);
     const [naytto, tulevanaytto] = useState(<p>testi</p>);
@@ -62,14 +62,19 @@ export default function Resepti() {
     }
     //
     function kategoriahaku() {
-        console.log(kategoriat);
+        console.log(kategoriat.categories[1]);
         console.log(kategoria);
     }
     return(
         <div>
             <h1>Recipe finder</h1>
             <div className="kategoriat">
-                
+                {kategoriat.categories.map((katsku) => (
+                    <div>
+                        {katsku.strCategory}
+                        <img src={katsku.strCategoryThumb}></img>
+                    </div>
+                ))}
             </div>
             <button onClick={() => kategoriahaku()}>etsi kategoria</button>
             <form>
