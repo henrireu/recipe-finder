@@ -29,6 +29,46 @@ export default function Home() {
         setUrl(urlKoko);
     }
 
+    //toimii hyvin. pientä hienosäätöä kaipaa css
+    function reseptiSiistitty() {
+        let ainekset = [];
+        let mittasuhteet = [];
+        for(let x = 1; x <21; x++) {
+            let ainesosa = resepti.meals[0][`strIngredient${x}`];
+            if (ainesosa !== null && ainesosa !== "") {
+                ainekset.push(ainesosa);
+            }
+            let mittasuhde = resepti.meals[0][`strMeasure${x}`];
+            if (mittasuhde !== null && mittasuhde !== "") {
+                mittasuhteet.push(mittasuhde);
+            }
+        }
+        return (
+            <div className="siistittyresepti">
+                <div className="siistittyresepti2">
+                    <h3 className="aineksetotsikko">Tarvittavat ainekset</h3>
+                    <ul>
+                        {ainekset.map((aines) => (
+                            <li>{aines}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="siistittyresepti2">
+                    <h3 className="aineksetotsikko">Mittasuhteet</h3>
+                    <ul>
+                        {mittasuhteet.map((mitta) => (
+                            <li>{mitta}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="siistittyresepti2">
+                    <h3 className="aineksetotsikko">Ohjeet</h3>
+                    <p className="ohjeet">{resepti.meals[0].strInstructions}</p>
+                </div>
+            </div>
+        )
+    }
+
     if(loading === true) {
         return (
             <div>
@@ -54,7 +94,8 @@ export default function Home() {
             <div className="ruokaresepti">
                 {resepti && resepti.meals && resepti.meals.length === 1 ? (
                     <div>
-                        <p className="testi">{resepti.meals[0].strArea}</p>
+                        <h2 className="testi">{resepti.meals[0].strMeal}</h2>
+                        {reseptiSiistitty()}
                     </div>
                 ) : (
                     <div>

@@ -6,6 +6,14 @@ h1{
   text-align: center;
 }
 
+ul {
+  list-style: none;
+}
+
+li {
+  margin-top: 10px;
+}
+
 .valmistusohje {
   margin-right: 600px;
 }
@@ -92,7 +100,23 @@ nav {
 
 .testi {
   color: pink;
+  margin-left: 50px;
 }
 
+.siistittyresepti {
+  display: flex;
+  flex-direction: row;
+  color: pink;
+}
 
+.siistittyresepti2 {
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.aineksetotsikko {
+  margin-top: 30px;
+  margin-left: 50px;
+}
 

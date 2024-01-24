@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
 import Resepti from "./recipe2.js";
 import Home from "./home.js";
 
@@ -20,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/recipe2" element={<Resepti />} />
+            <Route index element={<Home />} />
           </Routes>
         </div>
       </Router>
