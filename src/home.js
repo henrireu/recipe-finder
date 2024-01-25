@@ -33,31 +33,33 @@ export default function Home() {
     function reseptiSiistitty() {
         let ainekset = [];
         let mittasuhteet = [];
+        let ainesmitat = [];
         for(let x = 1; x <21; x++) {
+            let ainesmitta = [];
             let ainesosa = resepti.meals[0][`strIngredient${x}`];
             if (ainesosa !== null && ainesosa !== "") {
                 ainekset.push(ainesosa);
+                ainesmitta.push(ainesosa);
             }
             let mittasuhde = resepti.meals[0][`strMeasure${x}`];
             if (mittasuhde !== null && mittasuhde !== "") {
                 mittasuhteet.push(mittasuhde);
+                ainesmitta.push(mittasuhde);
+            }
+            if(ainesmitta.length === 2) {
+                ainesmitat.push(ainesmitta);
             }
         }
         return (
             <div className="siistittyresepti">
+                <h2 className="testi">{resepti.meals[0].strMeal}</h2>
                 <div className="siistittyresepti2">
                     <h3 className="aineksetotsikko">Tarvittavat ainekset</h3>
                     <ul>
-                        {ainekset.map((aines) => (
-                            <li>{aines}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="siistittyresepti2">
-                    <h3 className="aineksetotsikko">Mittasuhteet</h3>
-                    <ul>
-                        {mittasuhteet.map((mitta) => (
-                            <li>{mitta}</li>
+                        {ainesmitat.map((ainesmitta) => (
+                            <li>
+                                {ainesmitta[0] + " " + ainesmitta[1]}
+                            </li>
                         ))}
                     </ul>
                 </div>
@@ -79,7 +81,7 @@ export default function Home() {
 
     return (
         <div className="home">
-            <h1 className="homeotsikko">Reseptihaku</h1>
+            <h1 className="isootsikko">Reseptihaku</h1>
             <form>
                 <div className="inputcontainer">
                     <input 
@@ -94,12 +96,12 @@ export default function Home() {
             <div className="ruokaresepti">
                 {resepti && resepti.meals && resepti.meals.length === 1 ? (
                     <div>
-                        <h2 className="testi">{resepti.meals[0].strMeal}</h2>
+                        
                         {reseptiSiistitty()}
                     </div>
                 ) : (
                     <div>
-                        <p className="testi">Ei löytynyt reseptiä</p>
+                        <p className="testi">Reseptit ovat englanniksi. Hae reseptiä</p>
                     </div>
                 )}
             </div>
