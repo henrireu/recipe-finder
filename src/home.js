@@ -31,19 +31,15 @@ export default function Home() {
 
     //toimii hyvin. pientä hienosäätöä kaipaa css
     function reseptiSiistitty() {
-        let ainekset = [];
-        let mittasuhteet = [];
         let ainesmitat = [];
         for(let x = 1; x <21; x++) {
             let ainesmitta = [];
             let ainesosa = resepti.meals[0][`strIngredient${x}`];
             if (ainesosa !== null && ainesosa !== "") {
-                ainekset.push(ainesosa);
                 ainesmitta.push(ainesosa);
             }
             let mittasuhde = resepti.meals[0][`strMeasure${x}`];
             if (mittasuhde !== null && mittasuhde !== "") {
-                mittasuhteet.push(mittasuhde);
                 ainesmitta.push(mittasuhde);
             }
             if(ainesmitta.length === 2) {

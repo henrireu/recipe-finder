@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import PalautaRuoka from './ruokakomponentti.js';
 
 
 export default function Resepti() {
     const [kategoriat, setKategoriat] = useState();
     const [tieto, setTieto] = useState();
+    const [ruokatieto, setRuokatieto] = useState();
 
     useEffect(() => {
         async function fetchData() {
@@ -33,6 +35,61 @@ export default function Resepti() {
         console.log(data);
         setTieto(data);
     } 
+
+    function ehdollinenRenderointi(ruokaid) {
+        if(!ruokatieto) {
+            return null;
+        } else if (ruokatieto.meals[0].idMeal !== ruokaid){
+            return null;
+        } 
+        else {
+            let ainesmitat = [];
+            for (let x = 1; x < 21; x++) {
+                let ainesmitta = [];
+
+                let ainesosa = ruokatieto.meals[0][`strIngredient${x}`];
+                if (ainesosa !== null && ainesosa !== "") {
+                    ainesmitta.push(ainesosa);
+                }
+
+                let mittasuhde = ruokatieto.meals[0][`strMeasure${x}`];
+                if(mittasuhde !== null && mittasuhde !== "") {
+                    ainesmitta.push(mittasuhde);
+                }
+
+                if (ainesmitta.length === 2) {
+                    ainesmitat.push(ainesmitta);
+                }
+            }
+            return (
+                <div className="siistittyresepti">
+                    <div className="siistittyresepti2">
+                        <ul>
+                            <h3 classname="aineksetotsikko">Ainekset</h3>
+                            {ainesmitat.map((y) => (
+                                <li>
+                                    {y[0] + " " + y[1]}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="siistittyresepti2">
+                        <h3 classname="aineksetotsikko">Ohjeet</h3>
+                        <p className="ohjeet">{ruokatieto.meals[0].strInstructions}</p>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    const lataaRuoka = async (ruoka) => {
+        let urlAlku = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+        let kokoUrl = urlAlku + ruoka;
+        const res = await fetch(kokoUrl);
+        const data = await res.json();
+        console.log(data);
+        setRuokatieto(data);
+    }
     
 
     // tämä on erittäin tärkeä ja ohjelma kaatuu muuten
@@ -68,9 +125,14 @@ export default function Resepti() {
                 ) : (
                     <ul className="ruokalista">
                         {tieto.meals.map((ruoka) => (
-                            <li className="ruokalistaolio" key={ruoka.strMeal}>
+                            <li 
+                                className="ruokalistaolio" 
+                                key={ruoka.strMeal}
+                                onClick={() => lataaRuoka(ruoka.strMeal)}
+                            >
                                 <p>{ruoka.strMeal}</p>
                                 <img className="kuva" src={ruoka.strMealThumb}></img>
+                                {ehdollinenRenderointi(ruoka.idMeal)}
                             </li>
                         ))}
                     </ul>
