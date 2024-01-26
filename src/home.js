@@ -48,7 +48,11 @@ export default function Home() {
         }
         return (
             <div className="siistittyresepti">
-                <h2 className="testi">{resepti.meals[0].strMeal}</h2>
+                <div>
+                    <h2 className="testi">{resepti.meals[0].strMeal}</h2>
+                    <img className="kuva1" src={resepti.meals[0].strMealThumb}></img>
+                </div>
+                
                 <div className="siistittyresepti2">
                     <h3 className="aineksetotsikko">Tarvittavat ainekset</h3>
                     <ul>
@@ -96,9 +100,7 @@ export default function Home() {
                         {reseptiSiistitty()}
                     </div>
                 ) : (
-                    <div>
-                        <p className="testi">Reseptit ovat englanniksi. Hae reseptiä</p>
-                    </div>
+                    <div></div>
                 )}
             </div>
         </div>

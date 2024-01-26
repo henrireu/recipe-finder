@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PalautaRuoka from './ruokakomponentti.js';
 
 
 export default function Resepti() {
@@ -130,8 +129,11 @@ export default function Resepti() {
                                 key={ruoka.strMeal}
                                 onClick={() => lataaRuoka(ruoka.strMeal)}
                             >
-                                <p>{ruoka.strMeal}</p>
-                                <img className="kuva" src={ruoka.strMealThumb}></img>
+                                <div className="harmaus">
+                                    <p>{ruoka.strMeal}</p>
+                                    <img className="kuva" src={ruoka.strMealThumb}></img>
+                                </div>
+                                
                                 {ehdollinenRenderointi(ruoka.idMeal)}
                             </li>
                         ))}

@@ -51,7 +51,7 @@ li {
   padding: 20px;
 }
 
-.ruokalistaolio:hover {
+.harmaus:hover {
   background: grey;
 }
 
@@ -85,8 +85,6 @@ nav {
 .home {
   height: 100vh;
   border-radius: 8px;
-  background-image: url('kuvat/bolognese.jpg');
-  background-size: cover;
 }
 
 .isootsikko {
@@ -122,14 +120,17 @@ nav {
 }
 
 .testi {
-  color: pink;
+  color: black;
   margin-left: 50px;
+  margin-top: 30px;
 }
 
 .siistittyresepti {
   display: flex;
   flex-direction: row;
   color: black;
+  background: lightgrey;
+  border-radius: 8px;
 }
 
 .siistittyresepti2 {
@@ -138,8 +139,18 @@ nav {
   margin-right: 20px;
 }
 
+.kuva1 {
+  width: 300px;
+  height: 300px;
+  padding: 30px;
+}
+
 .aineksetotsikko {
   margin-top: 30px;
   margin-left: 50px;
 }
 
+.eiloydy {
+  text-align: center;
+  font-size: 30px;
+}
