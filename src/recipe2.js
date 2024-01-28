@@ -5,7 +5,10 @@ export default function Resepti() {
     const [kategoriat, setKategoriat] = useState();
     const [tieto, setTieto] = useState();
     const [ruokatieto, setRuokatieto] = useState();
+    
 
+
+    // muu osio
     useEffect(() => {
         async function fetchData() {
             try {
@@ -19,12 +22,6 @@ export default function Resepti() {
         }
         fetchData();
     }, []);
-
-    /*const testausta = async () => {
-        const res = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
-        const data = await res.json();
-        setTieto(data);
-    }*/
 
     const lataaKategoria = async (kategoria) => {
         let urlAlku = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
@@ -66,7 +63,7 @@ export default function Resepti() {
                         <ul>
                             <h3 classname="aineksetotsikko">Ainekset</h3>
                             {ainesmitat.map((y) => (
-                                <li>
+                                <li className="ohjeet">
                                     {y[0] + " " + y[1]}
                                 </li>
                             ))}
@@ -95,13 +92,6 @@ export default function Resepti() {
     if (!kategoriat || !kategoriat.categories) {
         return <p>Loading...</p>;
     }
-
-   
-
-    /*console.log(kategoriat.categories[0].strCategory);
-    kategoriat.categories.map((katsku) => (
-        console.log(katsku.strCategory)
-    ));*/
 
     return (
         <div>

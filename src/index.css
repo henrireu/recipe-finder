@@ -31,8 +31,14 @@ li {
   white-space: nowrap;
 }
 
+.kategoriaolio {
+  border: solid grey;
+  border-radius: 8px;
+}
+
 .kategoriaolio:hover {
   background-color: grey;
+  cursor: pointer;
 }
 
 
@@ -49,6 +55,21 @@ li {
   background: lightgrey;
   border-radius: 8px;
   padding: 20px;
+}
+
+.ruokalistaolio {
+  border: solid grey;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.ruokalistaolio:hover {
+  background: grey;
+}
+
+.harmaus {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .harmaus:hover {
@@ -104,6 +125,7 @@ nav {
   border-radius: 8px;
   margin-top: 10px;
   font-weight: bold;
+  margin-left: 5px;
 }
 
 .haeButton:hover {
@@ -113,10 +135,17 @@ nav {
   cursor: pointer;
 }
 
+
 .inputcontainer {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.ehdotukset:hover {
+  cursor: pointer;
+}
+
+.ehdotus:hover {
+  background: lightgrey;
 }
 
 .testi {
@@ -137,6 +166,10 @@ nav {
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.ohjeet {
+  font-size: 20px;
 }
 
 .kuva1 {
