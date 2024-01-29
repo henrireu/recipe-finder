@@ -5,6 +5,7 @@ export default function Resepti() {
     const [kategoriat, setKategoriat] = useState();
     const [tieto, setTieto] = useState();
     const [ruokatieto, setRuokatieto] = useState();
+    const [reseptiPainettu, setReseptiPainettu] = useState(false);
     
 
 
@@ -39,6 +40,7 @@ export default function Resepti() {
             return null;
         } 
         else {
+            // testataan
             let ainesmitat = [];
             for (let x = 1; x < 21; x++) {
                 let ainesmitta = [];

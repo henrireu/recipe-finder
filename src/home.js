@@ -69,10 +69,6 @@ export default function Home() {
         setEhdotus([]); // Tyhjennetään ehdotukset valinnan jälkeen
     };
 
-
-
-
-
     //muu osio
     useEffect(() => {
         async function fetchData() {
