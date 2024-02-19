@@ -5,11 +5,7 @@ export default function Resepti() {
     const [kategoriat, setKategoriat] = useState();
     const [tieto, setTieto] = useState();
     const [ruokatieto, setRuokatieto] = useState();
-    const [reseptiPainettu, setReseptiPainettu] = useState(false);
-    
 
-
-    // muu osio
     useEffect(() => {
         async function fetchData() {
             try {
@@ -41,6 +37,7 @@ export default function Resepti() {
         } 
         else {
             // testataan
+
             let ainesmitat = [];
             for (let x = 1; x < 21; x++) {
                 let ainesmitta = [];
@@ -86,7 +83,13 @@ export default function Resepti() {
         const res = await fetch(kokoUrl);
         const data = await res.json();
         console.log(data);
-        setRuokatieto(data);
+        if (!ruokatieto) {
+            setRuokatieto(data);
+        }
+        //setRuokatieto(data);
+        else {
+            setRuokatieto();
+        }
     }
     
 
